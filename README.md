@@ -20,7 +20,7 @@ that can be dropped onto any host (Netlify, Vercel, S3, GitHub Pages, a cPanel f
 | Page | File | Highlights |
 | --- | --- | --- |
 | Home | `index.html` | Preloader, cinematic hero, stats, editorial features, marquee, pinned horizontal "day" panel, map teaser, residences duo, gallery strip, CTA |
-| Explore the Map | `explore.html` | Hand-illustrated SVG estate map with pan / zoom / pinch, 18 categorized hotspots, detail drawer, filters, ambient soundscape |
+| Explore the Map | `explore.html` | Hyper-real bird's-eye aerial of the actual estate — stitched from public USGS/NAIP imagery — with pan / zoom / pinch, 18 geolocated hotspots, detail drawer, filters, ambient soundscape |
 | Golf | `golf.html` | Four championship courses with stat sheets, academy section |
 | Wellness & Spa | `wellness.html` | Mokara Spa treatments, three pools, fitness |
 | Culinary | `dining.html` | Nine dining venues in an editorial grid |
@@ -40,8 +40,11 @@ that can be dropped onto any host (Netlify, Vercel, S3, GitHub Pages, a cPanel f
 - Parallax imagery, clip-path image reveals, scroll-velocity-reactive marquee
 - Pinned horizontal scroll section with progress bar
 - Custom cursor with contextual labels (`View`, `Drag`) — desktop only
-- **Interactive estate map**: drag-to-pan, wheel/pinch zoom, pulsing categorized pins,
-  ease-to-pin drawer, category filters, Lake Travis inset
+- **Interactive estate map**: a real aerial plate of the property (140 USGS/NAIP
+  tiles stitched, color-graded, served locally), drag-to-pan, wheel/pinch zoom,
+  constant-size pulsing pins geolocated from OpenStreetMap data, ease-to-pin
+  drawer, category filters, designed cartographic overlay (serif labels, compass,
+  true scale bar, parchment cartouche) and a real Lake Travis aerial inset
 - **Ambient soundscape** synthesized live with WebAudio (wind, warm pad, distant
   songbirds) — zero audio files, toggleable, off by default
 - Accordion FAQs, simulated form submission with validation + success states,
@@ -60,18 +63,20 @@ Defined in `assets/css/main.css` (single file, tokenized):
 
 ## Stack notes
 
-- GSAP 3.12, ScrollTrigger and Lenis are **vendored** in `assets/js/vendor/` — the
-  site works offline except for photography (Unsplash CDN, every URL verified live)
-  and webfonts (Google Fonts, with system serif/sans fallbacks)
+- GSAP 3.12, ScrollTrigger and Lenis are **vendored** in `assets/js/vendor/`; the
+  estate aerial plates live in `assets/img/` (public-domain USGS NAIP imagery) —
+  the site works offline except for photography (Unsplash CDN, every URL verified
+  live) and webfonts (Google Fonts, with system serif/sans fallbacks)
 - Honors `prefers-reduced-motion`; content fully readable with JavaScript disabled
 - No tracking, no cookies, no dependencies to install
 
 ## Customization
 
 All copy lives in plain HTML. The map hotspots (names, copy, facts, positions,
-images) are a single `SPOTS` array at the top of `assets/js/explore.js`.
+images) are a single `SPOTS` array at the top of `assets/js/explore.js` —
+positions are percentages of the aerial plate, verified against the real terrain.
 
 ---
 
-*Concept shell for presentation purposes. Photography via Unsplash. Not affiliated
-with Omni Hotels & Resorts.*
+*Concept shell for presentation purposes. Photography via Unsplash; aerial imagery
+via USGS NAIP (public domain). Not affiliated with Omni Hotels & Resorts.*
